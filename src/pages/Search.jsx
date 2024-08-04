@@ -1,16 +1,45 @@
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { data } from "../tempData";
+import { Query, useQuery } from "@tanstack/react-query";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Checkbox from "@mui/material/Checkbox";
-// import getAllJobs from "../services/getJobs";
 import { useSearchParams } from "react-router-dom";
+import axios from "axios";
 import { grey } from "@mui/material/colors";
 import { useEffect, useRef, useState } from "react";
 export default function Search() {
+  const [searchParams] = useSearchParams();
+  const designation = useParams(`query`).query;
+  const paramExperience = searchParams.get("experience");
+  const paramLocation = searchParams.get(`location`);
+  console.log(designation, paramLocation);
+  useEffect(() => {
+    (async () => {
+      const options = {
+        method: "GET",
+        url: `https://jsearch.p.rapidapi.com/search`,
+        params: {
+          query: `${designation} in ${paramLocation}`,
+          page: "1",
+          num_pages: "1",
+          date_posted: "all",
+        },
+        headers: {
+          "x-rapidapi-key":
+            "dd7c21b42cmsh0b96720960fb70bp1b14e0jsn7902b4e8dcee",
+          "x-rapidapi-host": "jsearch.p.rapidapi.com",
+        },
+      };
+
+      const response = await axios.request(options);
+      console.log(response.data);
+      setData({ ...response.data });
+      setJobData({ ...response.data });
+    })();
+  }, []);
+  const [data, setData] = useState([]);
   const [bookmark, setBookMark] = useState(-1);
-  const [jobData, setJobData] = useState({ ...data });
+  const [jobData, setJobData] = useState([]);
   const [experienceValue, setExperienceValue] = useState(15);
   const [workCategories, setWorkCatergories] = useState([false, false]);
   useEffect(() => {
@@ -51,10 +80,6 @@ export default function Search() {
       btnexp.current.textContent = Number(experienceValue);
     }
   }, [experienceValue]);
-  const [searchParams] = useSearchParams();
-  const designation = useParams(`query`).query;
-  const paramExperience = searchParams.get("experience");
-  const paramLocation = searchParams.get(`location`);
   const [workMode, setWorkMode] = useState(true);
   const [experience, setExperience] = useState(true);
 
@@ -182,12 +207,12 @@ export default function Search() {
           </div>
           <div className="ml-16">
             <h1 className="text-gray-600 text-[13px] ml-2">
-              1 of 1 of {jobData.data.length}{" "}
+              1 of 1 of {jobData?.data?.length}{" "}
               <span className="text-black font-medium">
                 {designation[0].toUpperCase() + designation.slice(1)}
               </span>
             </h1>
-            {jobData.data.map((el, i) => (
+            {jobData?.data?.map((el, i) => (
               <div
                 key={i}
                 className="flex flex-col mt-6 w-[525px] px-5 py-3 rounded-3xl border shadow-xl"
