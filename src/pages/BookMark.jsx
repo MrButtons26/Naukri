@@ -67,6 +67,12 @@ export default function BookMark() {
           see all the Bookmarked Jobs
         </h1>
       )}
+      {localStorage.getItem("user") && bookmarks.length == 0 && (
+        <h1 className="mt-8 text-center text-[22px] font-light">
+          Please <span className="text-blue-600 font-semibold">Add Jobs</span>to
+          see all the Bookmarked Jobs
+        </h1>
+      )}
       {localStorage.getItem("user") && bookmarks.length !== 0 && (
         <div className="flex flex-col items-center pt-16 pb-16">
           <h1 className="text-[20px] font-light">

@@ -17,7 +17,7 @@ export default function Search() {
   const designation = useParams(`query`).query;
   const paramExperience = searchParams.get("experience");
   const paramLocation = searchParams.get(`location`);
-
+  const [trel, setTrel] = useState(false);
   //useeffect hook to get access the lifecycle of the component
 
   useEffect(() => {
@@ -313,13 +313,27 @@ export default function Search() {
                             JSON.stringify([el.job_id])
                           );
                         } else {
-                          localStorage.setItem(
-                            "bookmark",
-                            JSON.stringify([
-                              ...JSON.parse(localStorage.getItem("bookmark")),
-                              el.job_id,
-                            ])
-                          );
+                          let temp = JSON.parse(
+                            localStorage.getItem("bookmark")
+                          ).some((element, i) => element === el.job_id);
+                          if (temp) {
+                            let t = JSON.parse(
+                              localStorage.getItem("bookmark")
+                            ).filter((element, i) => element !== el.job_id);
+                            localStorage.setItem(
+                              "bookmark",
+                              JSON.stringify([...t])
+                            );
+                            setTrel(!trel);
+                          } else {
+                            localStorage.setItem(
+                              "bookmark",
+                              JSON.stringify([
+                                ...JSON.parse(localStorage.getItem("bookmark")),
+                                el.job_id,
+                              ])
+                            );
+                          }
                         }
                       }
                     }}
