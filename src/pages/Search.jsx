@@ -90,7 +90,7 @@ export default function Search() {
       </div>
       <div className="flex justify-center mt-12">
         <div className="flex relative z-[2]">
-          <div className="flex flex-col input-border shadow-2xl px-8 py-4 rounded-2xl min-w-[300px] h-[360px]">
+          <div className="flex flex-col input-border shadow-2xl px-8 py-4 rounded-2xl min-w-[300px] h-[288px]">
             <h1
               className="text-[15px] font-medium pb-3 mb-3"
               style={{ "border-bottom": "1px solid #D3D3D3" }}
