@@ -8,12 +8,21 @@ import axios from "axios";
 import { grey } from "@mui/material/colors";
 import { useEffect, useRef, useState } from "react";
 export default function Search() {
+  //search params to get the desired value from the url
+
   const [searchParams] = useSearchParams();
+
+  //query params to get the query values
+
   const designation = useParams(`query`).query;
   const paramExperience = searchParams.get("experience");
   const paramLocation = searchParams.get(`location`);
-  console.log(designation, paramLocation);
+
+  //useeffect hook to get access the lifecycle of the component
+
   useEffect(() => {
+    //axios to request the api
+
     (async () => {
       const options = {
         method: "GET",
@@ -37,6 +46,9 @@ export default function Search() {
       setJobData({ ...response.data });
     })();
   }, []);
+
+  //usestate to set the data to state
+
   const [data, setData] = useState([]);
   const [bookmark, setBookMark] = useState(-1);
   const [jobData, setJobData] = useState([]);

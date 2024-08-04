@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import correct from "../assets/correct.png";
 import RegisterForm from "./auth/RegisterForm";
 
+//register component to render the homepage
+
 export default function Register() {
+  //useNavigate to navigate between pages without refetch
   const navigate = useNavigate();
   return (
     <>

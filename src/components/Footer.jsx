@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import naukri from "../assets/markup.svg";
 import { Link } from "react-router-dom";
+
+//footer component to render the homepage
+
 export default function Footer() {
+  //useNavigate to navigate between pages without refetch
+
   const navigate = useNavigate();
   return (
     <>

@@ -1,3 +1,5 @@
+//all the third party and ad-hoc imports for the functioning of the app
+
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Routes } from "react-router-dom";
@@ -10,6 +12,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import BookMark from "./pages/BookMark";
 import PageNotFound from "./pages/PageNotFound";
 
+//query modulator for tanstack query
 const queryClient = new QueryClient({
   defaultOptions: {
     staleTime: 60 * 10000,
@@ -17,6 +20,7 @@ const queryClient = new QueryClient({
 });
 function App() {
   return (
+    //All the routes that are required for the functioning of the app using react router Dom
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>

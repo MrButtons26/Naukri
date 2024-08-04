@@ -1,7 +1,11 @@
 import { useState } from "react";
 import LoginForm from "../pages/auth/LoginForm";
 
+//login component to render the homepage
+
 export default function Login({ login, setLogin }) {
+  //usestate to access the lifecycle of the component and to store values to the state
+
   const [r, setR] = useState(false);
   return (
     <div

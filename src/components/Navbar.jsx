@@ -2,9 +2,20 @@ import { useNavigate } from "react-router-dom";
 import naukriLogo from "../assets/markup.svg";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+//login component to render the homepage
+
 export default function NavBar({ login, setLogin }) {
+  //usestate to access the lifecycle of the component and to store values to the state
+
   const [modalNumber, setModalNumber] = useState(-1);
+
+  //useNavigate to navigate between pages without refetch
+
   let navigate = useNavigate();
+
+  //useeffect to access the lifecycle of the component
+
   useEffect(() => {
     function setmyModal() {
       setModalNumber(-1);

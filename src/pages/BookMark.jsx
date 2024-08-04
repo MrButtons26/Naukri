@@ -4,8 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { RiH1 } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+//bookmark component to render the homepage
+
 export default function BookMark() {
+  //usestate to store and access the lifecycle of the component
+
   const [bookmarks, setBookMarks] = useState([]);
+
+  //useeffect to access the lifecycle of the component
+
   useEffect(() => {
     (async () => {
       if (localStorage.getItem("bookmark") === null) {
@@ -36,6 +44,9 @@ export default function BookMark() {
       }
     })();
   }, []);
+
+  //useNavigate to navigate between pages without refetch
+
   const navigate = useNavigate();
   return (
     <>

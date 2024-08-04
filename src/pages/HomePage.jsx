@@ -3,7 +3,9 @@ import Login from "../components/Login";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import { useState } from "react";
+//homepage component to render the homepage
 export default function HomePage() {
+  //useState hoook for loginFunctionality
   const [login, setLogin] = useState(false);
   return (
     <>

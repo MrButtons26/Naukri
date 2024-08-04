@@ -1,7 +1,10 @@
 import naukriLogo from "../assets/markup.svg";
 import { useNavigate } from "react-router-dom";
 
+//pagenotfound component to render the homepage
 export default function PageNotFound() {
+  //useNavigate to navigate between pages without refetch
+
   const navigate = useNavigate();
   return (
     <>
