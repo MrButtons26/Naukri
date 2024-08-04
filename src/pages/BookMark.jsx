@@ -67,7 +67,7 @@ export default function BookMark() {
           {bookmarks?.map((el, i) => (
             <div
               key={i}
-              className="flex flex-col mt-6 w-[525px] px-5 py-3 rounded-3xl border shadow-xl"
+              className="flex flex-col mt-6 w-[540px] px-5 py-3 rounded-3xl border shadow-xl"
             >
               <div className="flex justify-between  ">
                 <h1 className="text-[14px] font-semibold">
