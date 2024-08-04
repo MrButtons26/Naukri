@@ -4,7 +4,7 @@ The Naukri App is a robust full-stack application engineered to deliver an exten
 
 ## Deployment
 
-- **Frontend:** :- https://meek-gaufre-c77449.netlify.app/
+- **Frontend:** :- https://willowy-melba-ced052.netlify.app
 
 ### Frontend Setup
 
